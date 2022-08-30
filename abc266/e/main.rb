@@ -1,14 +1,10 @@
 N = gets.to_i
 
-if N == 1
-  puts 3.5
-  exit
+dp = 0
+
+N.times do
+  dp = (1..6).inject(0) { |result, num| result + [dp, num].max } / 6.to_f
 end
 
-a = 0
+puts dp
 
-(N-1).times do |i|
-  a+= 1/(2**i).to_i
-end
-
-puts (15/6)
