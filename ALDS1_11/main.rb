@@ -10,17 +10,14 @@ end
 deg = Array.new(N, -1)
 deg[0] = 0
 que = [0]
-visited = Array.new(N, false)
-visited[0] = true
 
 
 while !(v = que.shift).nil?
   G[v].each do |next_v|
-    next if visited[next_v] == true
+    next if deg[next_v] != -1
 
     deg[next_v] = deg[v] + 1
     que << next_v
-    visited[next_v] = true
   end
 end
 
