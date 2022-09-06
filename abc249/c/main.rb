@@ -22,3 +22,8 @@ end
 
 
 ok(2)
+ 
+(2**K).times do |i|
+  i.to_s(2).rjust(K, '0').split('').map(&:to_i)
+end
+

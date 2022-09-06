@@ -1,14 +1,14 @@
 N, M, K = gets.chomp.split.map(&:to_i)
 
 waru = 998_244_353
-dp = Array.new(M + 1) { Array.new(K + 1, 0) }
+# i個の数字を選択していて合計がjの組み合わせ
+dp = Array.new(51) { Array.new(3000, 0) }
 dp[0][0] = 1
 
-1.upto(M) do |i|
+1.upto(N) do |i|
   (K + 1).times do |j|
-    dp[i][j] += dp[i - 1][j]
-    dp[i][j] += dp[i - 1][j - i] if j - i >= 0
+    1.upto(M).each { |nxt| dp[i][j + nxt] += dp[i - 1][j] }
   end
 end
 
-p dp 
+puts dp[N][1..K].sum % waru
