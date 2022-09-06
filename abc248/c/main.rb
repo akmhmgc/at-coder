@@ -7,6 +7,7 @@ dp[0][0] = 1
 
 1.upto(N) do |i|
   (K + 1).times do |j|
+    # 毎回dp(i,j) = の形式だとは限らない 
     1.upto(M).each { |nxt| dp[i][j + nxt] += dp[i - 1][j] }
   end
 end
