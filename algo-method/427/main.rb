@@ -1,6 +1,7 @@
 N, X = gets.chomp.split.map(&:to_i)
 A = gets.chomp.split.map(&:to_i)
 
+# rubyではメソッド内の変数の空間が異なるのでインスタンス変数(or グローバル変数)に格納しておく必要がある
 @memos = Array.new(100) { Array.new(10000, 0) }
 @memos.unshift(Array.new(10, false))
 @memos[0][0] = true
