@@ -1,17 +1,17 @@
 N, X = gets.chomp.split.map(&:to_i)
 A = gets.chomp.split.map(&:to_i)
 
-def dfs(i, j)
-  if i == 0
-    return true if j == 0
+@memos = Array.new(100) { Array.new(10000, 0) }
+@memos.unshift(Array.new(10, false))
+@memos[0][0] = true
 
-    return false
-  end
+def dfs(i, j)
+  return @memos[i][j] if @memos[i][j] != 0
+
   flag = false
   flag = true if j >= A[i - 1] && dfs(i - 1, j - A[i - 1])
   flag = true if dfs(i - 1, j)
-  flag
+  @memos[i][j] = flag
 end
 
-
-puts dfs(N,X) ? 'Yes' : 'No'
+puts dfs(N, X) ? 'Yes' : 'No'
