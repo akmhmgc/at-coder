@@ -3,15 +3,15 @@ N, M = gets.chomp.split.map(&:to_i)
 S = Array.new(N) { gets.chomp }
 T = Array.new(M) { gets.chomp }.to_set
 
-if N == 1
-  puts T.include?(S[0]) ? (-1) : S
+if S.join.size > 16 or S.size == 1 && S[0].size < 3
+  p(-1)
   exit
-end 
-
+end
 # 再帰関数の作成
 # cur: 何番目を使用しているか
 # s: 使用する文字の配列 ['choku', 'dai']
 # remain 使用可能な'_'の数
+
 def dfs(cur, s, remain, ans)
   return if remain < 0
 
@@ -40,4 +40,4 @@ S.permutation(N) do |strs|
   dfs(0, strs, remain, '')
 end
 
-puts -1
+puts(-1)
