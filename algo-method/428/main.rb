@@ -13,7 +13,6 @@ def dfs(n, l, r)
     ans << arr
   end
 
-  dfs(n, l + 1, r).map { |arr| ans << arr }
   ans
 end
 
