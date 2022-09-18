@@ -21,7 +21,7 @@ def rec(v)
   end
 end
 
-while !(v = @been.find_index(false)).nil?
+while !(v = @been.find_index(false)).nil
   @nodes += 1
   rec(v)
 end
