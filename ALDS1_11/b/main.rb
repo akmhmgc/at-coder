@@ -31,11 +31,10 @@ def dfs(v)
   @kanryou[v] = @time
 end
 
+# 有向グラフを見てなければスタート地点を変える場合
 1.upto(N) do |i|
   dfs(i)
 end
-
-p @been
 
 1.upto(N) do |i|
   puts [i, @hakken[i], @kanryou[i]].join(' ')
