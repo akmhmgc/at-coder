@@ -8,8 +8,6 @@ dp[0][0] = 0
 1.upto((1 << N) - 1) do |s|
   N.times do |i|
     N.times do |j|
-      # 集合に存在しないものはスキップする
-      # 例) {0,2}は最後が1になり得ないのでd[{0,2}][1]はスキップする
       next unless (s >> i) & 1 == 1
 
       dp[s][i] = [dp[s][i], dp[s & ~(1 << i)][j] + A[j][i]].min
