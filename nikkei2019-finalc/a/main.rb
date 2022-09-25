@@ -13,14 +13,9 @@ end
 C = cumsum(A)
 
 1.upto(N) do |k|
-  value = 0
-
-  # こっちの書き方のほうがわかりやすい
-  0.upto(N - k) do |i|
-    s = i
-    e = i + k
-    value = [value, C[e] - C[s]].max
-  end
-
-  puts value
+  puts(
+    0.upto(N - k).reduce(0) do |ans, i|
+      [ans, C[i + k] - C[i]].max
+    end
+  )
 end
