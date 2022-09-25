@@ -13,13 +13,14 @@ end
 C = cumsum(A)
 
 1.upto(N) do |k|
-  values = []
+  value = 0
 
-  (N - k + 1).times do |i|
+  # こっちの書き方のほうがわかりやすい
+  0.upto(N - k) do |i|
     s = i
     e = i + k
-    values << (C[e] - C[s])
+    value = [value, C[e] - C[s]].max
   end
 
-  puts values.max
+  puts value
 end
