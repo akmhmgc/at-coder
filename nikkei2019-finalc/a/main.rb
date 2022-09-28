@@ -19,3 +19,4 @@ C = cumsum(A)
     end
   )
 end
+mk
