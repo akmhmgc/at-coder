@@ -11,5 +11,3 @@ dp = Array.new(N, INF)
 end
 
 puts(dp.count { |v| v != INF })
-
-# hogehgoe
