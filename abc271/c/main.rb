@@ -1,36 +1,34 @@
 N = gets.to_i
-A = gets.chomp.split.map(&:to_i).sort
+A = gets.chomp.split.map(&:to_i).sort.unshift(0)
 
-if N == 1
-  if A[0] == 1
-    puts 1
+# i巻目の本を読んだかどうか
+vol = Array.new(N + 2, false)
+
+# 二冊以上ある、またはNを越える巻は確実に売る
+sold = 0
+
+A.each do |book|
+  sold += 1 if book >= N + 1
+  sold += 1 if vol[book] == true
+  vol[book] = true if book <= N
+end
+
+l = 1
+r = N
+
+while true
+  l += 1 while vol[l] == true
+  r -= 1 while vol[r] == false && r != 0
+
+  if sold >= 2
+    sold -= 2
+    vol[l] = true
   else
-    puts 0
-  end
-  exit
-end
+    break if l >= r
 
-i = 0
-count = 0
-diff = 0
-len = N - 1
-
-while true do
-  break if i == len + 1
-
-  if A[i] == i + 1 + diff
-    count += 1
-    i += 1
-  elsif len - i == 1
-    i += 1
-    count += 1
-    break
-  elsif len - i > 1
-    len -= 2
-    diff += 1
-    count +=1
-    A.pop(2)
+    vol[r] = false
+    sold += 1
   end
 end
 
-puts count
+puts l - 1
