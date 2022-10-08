@@ -1,3 +1,15 @@
+
+def bfs(s, g, been, prev)
+  queue = [s]
+  until (v = queue.shift).nil?
+    been[v] = true
+    g[v].each do |v_next|
+      next if been[v_next] == true
+      prev[v_next] = v
+      queue << v_next
+    end
+  end
+end
 N, M, S, T = gets.chomp.split.map(&:to_i)
 G = Array.new(N) { [] }
 
@@ -9,19 +21,7 @@ end
 been = Array.new(N, false)
 prev = Array.new(N, -1)
 
-queue = [S]
-
-until (v = queue.shift).nil?
-  been[v] = true
-
-  G[v].each do |v_next|
-    next if been[v_next] == true
-
-    prev[v_next] = v
-    queue << v_next
-  end
-end
-
+bfs(S, G, been, prev)
 
 order = []
 now = T
@@ -32,4 +32,3 @@ end
 
 puts order.count
 puts order.reverse * ' '
-
