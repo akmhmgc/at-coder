@@ -47,3 +47,32 @@ cell.combination(2).each do |b, a|
 end
 
 puts 'No'
+
+
+kit_group = KitGroup.find(3589)
+
+kits = kit_group.kits
+
+kits.find_each do |kit|
+  profiles = kit.user.organization_patient_user_profiles
+
+  profiles.each do |profile|
+    next if profile.organization_id != 529
+    
+    profile.update!(organization_id: 1636)
+  end
+end
+
+
+kit_group = KitGroup.find(3589)
+kits = kit_group.kits
+kits.find_each do |kit|
+  next unless kit.user
+
+  profiles = kit.user.organization_patient_user_profiles
+  profiles.each do |profile|
+    next if profile.organization_id != 529
+    
+    profile.update!(organization_id: 1636)
+  end
+end
