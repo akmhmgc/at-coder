@@ -15,6 +15,8 @@ end
 @max = 1
 @gone = Set.new
 
+# goneは
+
 def rec(v)
   return if @gone.include?(v)
 
