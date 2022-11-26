@@ -8,19 +8,18 @@ G = Array.new(N){[]}
 end
 
 
+dist = Array.new(N, -1)
 que = [0]
-been = Array.new(N, false)
-count = Array.new(N, 0)
+dist[0] = 0
 
 while true
   break if (v = que.shift).nil?
-  been[v] = true
 
   G[v].each do |v2|
-    next if been[v2] == true
-    count[v2] = count[v] + 1
+    next if dist[v2] != -1 
+    dist[v2] = dist[v] + 1
     que << v2
   end
 end
 
-puts count.max
+puts dist.max
