@@ -16,14 +16,6 @@ if !A.include?(a1) || !A.include?(a2)
 end
 
 nums = S[1...-1]
-N =  ("0"..'9').to_a
-
-nums.each do |ni|
-  next if N.include?(ni)
-
-  puts 'No'
-  exit
-end
 
 val = nums.join.to_i
 
