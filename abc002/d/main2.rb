@@ -21,10 +21,7 @@ ans = 0
   end
   next unless flag
 
-  count = 0
-  N.times do |l|
-    count += 1 if (i >> l) & 1 == 1
-  end
+  count = i.to_s(2).count('1')
   ans = [ans, count].max
 end
 
