@@ -9,14 +9,13 @@ N.times do
 end
 
 # dp[i][j]: i番目の品物まで見て重さjの時の最大の価値
-dp = Array.new(N + 1) { Array.new(M + 1, -10**20) }
-dp[0][0] = 0
+dp = Array.new(N + 1) { Array.new(M + 1, 0) }
 
 1.upto(N) do |i|
   (M + 1).times do |j|
     wi = W[i]
     vi = V[i]
-    dp[i][j] = [dp[i][j], dp[i - 1][j]].max
+    dp[i][j] = dp[i - 1][j]
     dp[i][j] = [dp[i][j], dp[i - 1][j - wi] + vi].max if j - wi >= 0
   end
 end
