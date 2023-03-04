@@ -33,4 +33,4 @@ N.times do
           CI[x2][y2] - CI[x2][y1 - 1] - CI[x1 - 1][y2] + CI[x1 - 1][y1 - 1]]
 end
 
-ans.each{|line| puts line * ' c'}
+ans.each{|line| puts line * ' '}
